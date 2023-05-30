@@ -2,6 +2,9 @@ import './App.css';
 import { data } from "../top-headlines-mock";
 import ArticlePreview from './ArticlePreview';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useState } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+
 
 function App() {
 
@@ -16,11 +19,28 @@ function App() {
       </Col>)
   })
 
+
   return (
     <main>
       <Container>
         <Row>
-            {articles}
+          <Switch>
+            <Route exact path='/'>
+              {/* <LandingPage /> */}
+            </Route>
+            <Route path='/articles/:searchTerm'>
+              {articles}
+            </Route>
+            <Route path='/full-article/:title'>
+              <FullArticle />
+            </Route>
+            <Route exact path='404'>
+              {/* <NotFound /> */}
+            </Route>
+            <Route path='*'>
+              <Redirect to='/404' />
+            </Route>
+          </Switch>
         </Row>
       </Container>
     </main>
