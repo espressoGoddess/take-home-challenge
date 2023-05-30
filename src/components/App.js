@@ -6,21 +6,21 @@ import { Container, Row, Col } from 'react-bootstrap';
 function App() {
 
   const articles = data.articles.map(article => {
-    return (<ArticlePreview
-      key={article.url}
-      img={article.urlToImage}
-      title={article.title}
-      date={article.publishedAt}
-      description={article.description}/>)
+    return (<Col>
+      <ArticlePreview
+        key={article.url}
+        img={article.urlToImage}
+        title={article.title}
+        date={article.publishedAt}
+        description={article.description}/>
+      </Col>)
   })
 
   return (
     <main>
       <Container>
         <Row>
-          <Col>
             {articles}
-          </Col>
         </Row>
       </Container>
     </main>
