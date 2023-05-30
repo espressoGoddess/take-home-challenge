@@ -1,24 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import { data } from "../top-headlines-mock";
+import ArticlePreview from './ArticlePreview';
 
 function App() {
+
+  const articles = data.articles.map(article => {
+    return (<ArticlePreview key={article.url} title={article.title} date={article.publishedAt} description={article.description}/>)
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      {articles}
+    </main>
   );
 }
 

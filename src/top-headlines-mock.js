@@ -1,7 +1,7 @@
-{
-  "status": "ok",
-  "totalResults": 35,
-  "articles": [
+export const data = {
+  status: "ok",
+  totalResults: 35,
+  articles: [
     {
       "source": {
         "id": "cbs-news",
