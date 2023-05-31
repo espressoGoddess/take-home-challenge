@@ -48,7 +48,7 @@ function App() {
       <Container>
         <Row>
           <header className='mt-5 border-bottom pb-4 d-flex justify-content-between'>
-            <Link to={`/articles/${searchTerm}`}>
+            <Link to='/'>
               <img className='logo' src={require('../logo.png')}/>
             </Link>
             <Switch>
