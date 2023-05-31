@@ -10,9 +10,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 function App() {
   const [searchTerm, setSearchTerm] = useState('top-headlines');
 
-
-  const findArticle = (articleToFindUrl) => {
-    return data.articles.find(article => article.url === articleToFindUrl)
+  const findArticle = (titleToFind) => {
+    return data.articles.find(article => article.title === titleToFind)
   }
 
   const articles = data.articles.map(article => {
@@ -39,7 +38,7 @@ function App() {
               {articles}
             </Route>
             <Route path='/full-article/:title'>
-              <FullArticle />
+              <FullArticle findArticle={findArticle}/>
             </Route>
             <Route exact path='/404'>
               <p>404</p>
