@@ -9,17 +9,16 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('top-headlines');
-  
+
+
   const findArticle = (articleToFindUrl) => {
     return data.articles.find(article => article.url === articleToFindUrl)
   }
 
   const articles = data.articles.map(article => {
-    return (<Col>
+    return (<Col key={article.url}>
       <ArticlePreview
-        findArticle={findArticle}
         searchTerm={searchTerm}
-        key={article.url}
         url={article.url}
         img={article.urlToImage}
         title={article.title}
