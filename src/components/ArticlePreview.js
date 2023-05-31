@@ -10,7 +10,7 @@ export default function ArticlePreview({ title, date, img, description, url}) {
         <Card.Img variant="top" src={img}/>
       </Ratio>
       <Card.Body className='mh-17'>
-        <Card.Title>{title}</Card.Title>
+        <Card.Title className='truncate'>{title}</Card.Title>
         <Card.Text>{date}</Card.Text>
         <Card.Text className='truncate'>{description ? description : 'You will have to click below to find out more'}</Card.Text>
         <Button as={Link} variant='outline-secondary' to={`/full-article/${encodeURIComponent(title)}`}>Learn More</Button>

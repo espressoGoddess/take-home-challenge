@@ -2,9 +2,10 @@ import './App.css';
 import { data } from "../top-headlines-mock";
 import ArticlePreview from './ArticlePreview';
 import FullArticle from './FullArticle';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import Search from './Search';
 
 
 function App() {
@@ -26,10 +27,25 @@ function App() {
       </Col>)
   })
 
+
   return (
     <main>
       <Container>
         <Row>
+          <header className='mt-5 border-bottom pb-4 d-flex justify-content-between'>
+            <Link to={`/articles/${searchTerm}`}>
+              <img className='logo' src={require('../logo.png')}/>
+            </Link>
+            <Switch>
+              <Route path='/articles/:searchTerm'>
+                <Search/>
+              </Route>
+              <Route path='*'>
+                <Button as={Link} to={`/articles/${searchTerm}`}>Go Back</Button>
+              </Route>
+            </Switch>
+          </header>
+
           <Switch>
             <Route exact path='/'>
               <p>landing</p>
@@ -41,7 +57,7 @@ function App() {
               <FullArticle findArticle={findArticle}/>
             </Route>
             <Route exact path='/404'>
-              <p>404</p>
+              <h1 className='mt-5'>Whoops, it doesn't look like that page exists</h1>
             </Route>
             <Route path='*'>
               <Redirect to='/404' />
