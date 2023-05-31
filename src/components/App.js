@@ -35,11 +35,27 @@ function App() {
 
   const getArticles = (articles) => {
     if (searchTerm === 'top-headlines') {
-      return createArticles(articles)
+      return (
+        <>
+          <h1 className='mt-3'>You are currently viewing the top headlines for the US</h1>
+          {createArticles(articles)}
+        </>
+      );
     } else if (filterArticles(articles).length) {
-      return createArticles(filterArticles(articles))
+      return (
+      <>
+        <h1 className='mt-3'>You are currently viewing articles that match '{searchTerm}'</h1>
+        <Button variant='outline-secondary' onClick={() => setSearchTerm('top-headlines')}>Reset Search</Button>
+        {createArticles(filterArticles(articles))}
+      </>
+      );
     } else {
-      return (<h1>Sorry there are no articles matching that search term</h1>);
+      return (
+      <>
+        <h1 className='mt-3'>Sorry there are no articles matching '{searchTerm}'</h1>
+        <Button variant='outline-secondary' onClick={() => setSearchTerm('top-headlines')}>Reset Search</Button>
+      </>
+      );
     }  
   }
 
