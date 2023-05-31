@@ -1,7 +1,7 @@
 import { Card, Ratio, Button } from "react-bootstrap";
 import { useRouteMatch, Link } from "react-router-dom";
 
-export default function ArticlePreview({ title, date, img, description, url}) {
+export default function ArticlePreview({ title, date, img, description }) {
   const match = useRouteMatch('/articles/:searchTerm');
 
   return (

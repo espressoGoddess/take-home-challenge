@@ -45,7 +45,10 @@ function App() {
       return (
       <>
         <h1 className='mt-3'>You are currently viewing articles that match '{searchTerm}'</h1>
-        <Button variant='outline-secondary' onClick={() => setSearchTerm('top-headlines')}>Reset Search</Button>
+        <div className='d-flex'>
+          <Button variant='outline-secondary' onClick={() => setSearchTerm('top-headlines')}>Reset Search</Button>
+
+        </div>
         {createArticles(filterArticles(articles))}
       </>
       );
