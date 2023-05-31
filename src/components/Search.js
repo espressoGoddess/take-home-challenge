@@ -7,6 +7,7 @@ export default function Search({ setSearchTerm }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchTerm(searchInput);
+    setSearchInput('');
   }
 
   return (

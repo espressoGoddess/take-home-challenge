@@ -75,14 +75,18 @@ function App() {
                 {null}
               </Route>
               <Route path='*'>
-                <Button as={Link} to={`/articles/${searchTerm}`}>Go Back</Button>
+                <Button as={Link} variant='outline-secondary' to={`/articles/${searchTerm}`}>Go Back</Button>
               </Route>
             </Switch>
           </header>
 
           <Switch>
             <Route exact path='/'>
-              <p>landing</p>
+              <div className='d-flex flex-column align-items-center'>
+                <h1 className='mt-5'>Welcome to Your News Now</h1>
+                <p></p>
+                <Button className='mt-5' as={Link} variant='outline-secondary' to='/articles/top-headlines'>See Top Articles</Button>
+              </div>
             </Route>
             <Route path='/articles/:searchTerm'>
               {getArticles(data.articles)}
