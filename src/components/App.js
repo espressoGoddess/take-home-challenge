@@ -27,14 +27,13 @@ function App() {
       </Col>)
   })
 
-
   return (
     <main>
       <Container>
         <Row>
           <Switch>
             <Route exact path='/'>
-              {/* <LandingPage /> */}
+              <p>landing</p>
             </Route>
             <Route path='/articles/:searchTerm'>
               {articles}
@@ -42,8 +41,8 @@ function App() {
             <Route path='/full-article/:title'>
               <FullArticle />
             </Route>
-            <Route exact path='404'>
-              {/* <NotFound /> */}
+            <Route exact path='/404'>
+              <p>404</p>
             </Route>
             <Route path='*'>
               <Redirect to='/404' />
