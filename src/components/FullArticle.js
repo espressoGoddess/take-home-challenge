@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { Card, Col, Button } from "react-bootstrap";
 import { Link, useRouteMatch } from "react-router-dom";
 
@@ -13,7 +14,7 @@ export default function FullArticle({ findArticle, searchTerm }) {
     return (
     <Col>
     <div className='mt-3 mb-2 d-flex justify-content-between align-items-center'>
-      <p>{article.publishedAt}</p>
+      <p>{DateTime.fromISO(article.publishedAt).toLocaleString(DateTime.DATE_MED)}</p>
       <Button className='mb-2' variant='outline-secondary' as={Link} to={`/articles/${searchTerm}`}>Go Back</Button>
     </div>
     <div className='text-center'>

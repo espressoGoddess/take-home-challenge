@@ -7,7 +7,6 @@ import { Switch, Route, Redirect, Link, useHistory } from 'react-router-dom';
 import Search from './Search';
 import apiCalls from '../api-calls';
 
-
 export default function App() {
   const [searchTerm, setSearchTerm] = useState('top-headlines');
   const [articles, setArticles] = useState([]);
