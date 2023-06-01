@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { Card, Col, Button } from "react-bootstrap";
 import { Link, useRouteMatch } from "react-router-dom";
 
@@ -13,17 +14,17 @@ export default function FullArticle({ findArticle, searchTerm }) {
     return (
     <Col>
     <div className='mt-3 mb-2 d-flex justify-content-between align-items-center'>
-      <p>{article.publishedAt}</p>
+      <p>{DateTime.fromISO(article.publishedAt).toLocaleString(DateTime.DATE_MED)}</p>
       <Button className='mb-2' variant='outline-secondary' as={Link} to={`/articles/${searchTerm}`}>Go Back</Button>
     </div>
-      <Card>
-        <Card.Title className='m-2'>{article.title}</Card.Title>
-        <Card.Img src={article.urlToImage}/>
-        <Card.Body>
-          <Card.Text>By {article.author}</Card.Text>
-          <Card.Text>{article.content}</Card.Text>
-        </Card.Body>
-      </Card>
+    <div className='text-center'>
+      <h1 className='m-2 text-start ms-4'>{article.title}</h1>
+      <img className='large-img' src={article.urlToImage}/>
+      <div>
+        <p>By {article.author}</p>
+        <p>{article.content}</p>
+      </div>
+    </div>
     </Col>
   );
  } return (<h2>Loading...</h2>);
