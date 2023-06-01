@@ -1,7 +1,7 @@
 import { Card, Col, Button } from "react-bootstrap";
 import { Link, useRouteMatch } from "react-router-dom";
 
-export default function FullArticle({ findArticle }) {
+export default function FullArticle({ findArticle, searchTerm }) {
 
   let article;
   const match = useRouteMatch('/full-article/:title');

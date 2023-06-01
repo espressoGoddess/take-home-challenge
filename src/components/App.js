@@ -95,7 +95,7 @@ function App() {
               {getArticles(data.articles)}
             </Route>
             <Route path='/full-article/:title'>
-              <FullArticle findArticle={findArticle}/>
+              <FullArticle findArticle={findArticle} searchTerm={searchTerm}/>
             </Route>
             <Route exact path='/404'>
               <h1 className='mt-5'>Whoops, it doesn't look like that page exists</h1>
