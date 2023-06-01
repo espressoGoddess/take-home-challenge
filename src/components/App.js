@@ -75,7 +75,7 @@ export default function App() {
     <main>
       <Container>
         <Row>
-          <header className='mt-5 border-bottom pb-4 d-flex justify-content-between'>
+          <header className='mt-5 border-bottom pb-4 d-flex justify-content-between flex-column flex-sm-row'>
             <Link to='/'>
               <img alt='logo that says your news now' className='logo' src={require('../logo.png')}/>
             </Link>
