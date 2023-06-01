@@ -15,21 +15,17 @@ export default function App() {
   const history = useHistory();
 
   useEffect(() => {
-    getTopHeadlines();
-  }, [])
-
-  const getTopHeadlines = () => {
     apiCalls('https://newsapi.org/v2/top-headlines?country=us&apiKey=15d3c99d51e4422087e38437ebec740f')
       .then(data => setArticles(data.articles))
       .catch(setError(true));
-  }
+  }, [])
 
   const findArticle = (titleToFind) => {
     return articles.find(article => article.title === titleToFind);
   }
 
   const filterArticles = (articles) => {
-    return articles.filter(article => article.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    return articles.filter(article => article.title.toLowerCase().includes(searchTerm.toLowerCase()));
   }
 
   const createArticles = (articles) => {
@@ -48,7 +44,6 @@ export default function App() {
 
   const resetSearch = () => {
     setSearchTerm('top-headlines');
-    getTopHeadlines();
     history.push('/articles/top-headlines');
   }
 
