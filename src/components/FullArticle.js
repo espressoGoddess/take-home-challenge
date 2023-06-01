@@ -6,7 +6,7 @@ export default function FullArticle({ findArticle, searchTerm }) {
   let article;
   const match = useRouteMatch('/full-article/:title');
   if(match) {
-    article = findArticle(match.params.title.split('%20').join(' '))
+    article = findArticle(decodeURIComponent(match.params.title))
   }
   
   if (article) {
