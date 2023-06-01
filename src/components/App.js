@@ -100,8 +100,12 @@ export default function App() {
                 <Button className='mt-5' as={Link} variant='outline-secondary' to='/articles/top-headlines'>See Top Articles</Button>
               </div>
             </Route>
-            <Route path='/articles/:searchTerm'>
-              {getArticles(data.articles)}
+            <Route exact path='/articles/top-headlines'>
+              <h1 className='mt-3'>You are currently viewing the top headlines for the US</h1>
+              {createArticles(articles)}
+            </Route>
+            <Route exact path='/articles/search'>
+            {getSearchResults()}
             </Route>
             <Route path='/full-article/:title'>
               <FullArticle findArticle={findArticle} searchTerm={searchTerm}/>
