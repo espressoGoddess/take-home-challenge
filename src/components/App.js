@@ -98,7 +98,7 @@ export default function App() {
               <h1 className='mt-3'>You are currently viewing the top headlines for the US</h1>
               {createArticles(articles)}
             </Route>
-            <Route exact path='/articles/search'>
+            <Route path='/articles/:searchTerm'>
             {getSearchResults()}
             </Route>
             <Route path='/full-article/:title'>
