@@ -3,12 +3,12 @@ import { data } from "../top-headlines-mock";
 import ArticlePreview from './ArticlePreview';
 import FullArticle from './FullArticle';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { useState } from 'react';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Switch, Route, Redirect, Link, useHistory } from 'react-router-dom';
 import Search from './Search';
 
 
-function App() {
+export default function App() {
   const [searchTerm, setSearchTerm] = useState('top-headlines');
 
   const findArticle = (titleToFind) => {
@@ -33,33 +33,29 @@ function App() {
     });
   }
 
-  const getArticles = (articles) => {
-    if (searchTerm === 'top-headlines') {
-      return (
-        <>
-          <h1 className='mt-3'>You are currently viewing the top headlines for the US</h1>
-          {createArticles(articles)}
-        </>
-      );
-    } else if (filterArticles(articles).length) {
-      return (
+  const resetSearch = () => {
+    setSearchTerm('top-headlines');
+    getTopHeadlines();
+    history.push('/articles/top-headlines');
+  }
+
+  const getSearchResults = () => {
+    return filterArticles(articles).length ? (
       <>
         <h1 className='mt-3'>You are currently viewing articles that match '{searchTerm}'</h1>
         <div className='d-flex'>
-          <Button variant='outline-secondary' onClick={() => setSearchTerm('top-headlines')}>Reset Search</Button>
-
+          <Button variant='outline-secondary' onClick={resetSearch}>Reset Search</Button>
         </div>
         {createArticles(filterArticles(articles))}
       </>
-      );
-    } else {
-      return (
+    ) : (
       <>
         <h1 className='mt-3'>Sorry there are no articles matching '{searchTerm}'</h1>
-        <Button variant='outline-secondary' onClick={() => setSearchTerm('top-headlines')}>Reset Search</Button>
+        <div className='d-flex'>
+          <Button variant='outline-secondary' onClick={resetSearch}>Reset Search</Button>
+        </div>
       </>
-      );
-    }  
+    );  
   }
 
   return (
@@ -68,10 +64,10 @@ function App() {
         <Row>
           <header className='mt-5 border-bottom pb-4 d-flex justify-content-between'>
             <Link to='/'>
-              <img className='logo' src={require('../logo.png')}/>
+              <img alt='logo that says your news now' className='logo' src={require('../logo.png')}/>
             </Link>
             <Switch>
-              <Route path='/articles/:searchTerm'>
+              <Route path='/articles'>
                 <Search setSearchTerm={setSearchTerm}/>
               </Route>
               <Route path='/'>
@@ -109,5 +105,3 @@ function App() {
     </main>
   );
 }
-
-export default App;

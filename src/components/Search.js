@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { Form, Button, FloatingLabel } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 export default function Search({ setSearchTerm }) {
   const [searchInput, setSearchInput] = useState('');
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchTerm(searchInput);
     setSearchInput('');
+    history.push('/articles/search');
   }
 
   return (
