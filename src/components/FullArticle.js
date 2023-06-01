@@ -14,7 +14,7 @@ export default function FullArticle({ findArticle }) {
     <Col>
     <div className='mt-3 mb-2 d-flex justify-content-between align-items-center'>
       <p>{article.publishedAt}</p>
-      <Button className='mb-2' variant='outline-secondary' as={Link} to='/articles/:searchTerm'>Go Back</Button>
+      <Button className='mb-2' variant='outline-secondary' as={Link} to={`/articles/${searchTerm}`}>Go Back</Button>
     </div>
       <Card>
         <Card.Title className='m-2'>{article.title}</Card.Title>

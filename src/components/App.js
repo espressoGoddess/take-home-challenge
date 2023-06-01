@@ -16,7 +16,7 @@ function App() {
   }
 
   const filterArticles = (articles) => {
-    return articles.filter(article => article.title.includes(searchTerm) || article.title.includes(searchTerm.toLowerCase()))
+    return articles.filter(article => article.title.toLowerCase().includes(searchTerm.toLowerCase()))
   }
 
   const createArticles = (articles) => {
