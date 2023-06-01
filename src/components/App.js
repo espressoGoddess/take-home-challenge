@@ -1,18 +1,31 @@
 import './App.css';
-import { data } from "../top-headlines-mock";
 import ArticlePreview from './ArticlePreview';
 import FullArticle from './FullArticle';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { Switch, Route, Redirect, Link, useHistory } from 'react-router-dom';
 import Search from './Search';
+import apiCalls from '../api-calls';
 
 
 export default function App() {
   const [searchTerm, setSearchTerm] = useState('top-headlines');
+  const [articles, setArticles] = useState([]);
+  const [error, setError] = useState(false);
+  const history = useHistory();
+
+  useEffect(() => {
+    getTopHeadlines();
+  }, [])
+
+  const getTopHeadlines = () => {
+    apiCalls('https://newsapi.org/v2/top-headlines?country=us&apiKey=15d3c99d51e4422087e38437ebec740f')
+      .then(data => setArticles(data.articles))
+      .catch(setError(true));
+  }
 
   const findArticle = (titleToFind) => {
-    return data.articles.find(article => article.title === titleToFind)
+    return articles.find(article => article.title === titleToFind);
   }
 
   const filterArticles = (articles) => {
