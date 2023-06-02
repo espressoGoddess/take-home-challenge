@@ -77,7 +77,7 @@ export default function App() {
               <Route path='/articles'>
                 <Search setSearchTerm={setSearchTerm}/>
               </Route>
-              <Route path='/'>
+              <Route exact path='/'>
                 {null}
               </Route>
               <Route path='*'>
